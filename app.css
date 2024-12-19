@@ -1,0 +1,548 @@
+:root {
+  --main-white: #f0f0f0;
+  --main-yellow: #e5ab16;
+  --second-yellow: #e8c468; 
+  --main-green: #56932f;
+ } 
+* {
+  margin: 0;
+  padding: 0;
+} 
+
+html {
+  box-sizing: border-box; 
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--main-white);
+}
+
+.link { 
+  text-decoration: underline;
+  line-height: 22pt;
+  font-size: 90%;
+} 
+
+.text-link { 
+  text-decoration: underline;
+  line-height: 22pt;
+  font-size: 100%;
+} 
+
+.link:hover, .text-link:hover{ 
+  color: #4b76db; 
+} /* CSS link hover */
+
+/*************************************MACRO*************************************/
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-align: center;
+
+  /* max-width: 640px; */
+  max-width: 100%;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 6rem;
+}
+
+/* why don't these changes occur on mac? */
+.welcome-section, .projects-section, .feats-section, .writing-section, .content {
+  background-color: rgb(0, 0, 0);
+  background-image: linear-gradient(62deg, #444445 0%, #333234 100%);
+}
+
+.about-section, .skills-section, .footer {
+  background-color: var(--main-green);
+}
+
+.sheephunt-section {
+  background-color: green;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-white);
+}
+
+.webpage {
+  width: 100%; 
+  max-width: 100%;
+}
+
+/*************************************NAVBAR SHIT*************************************/
+nav ul {
+  /* what's this for? Removes the bullet points from the navbar items */
+  list-style: none; 
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  /* what's top/left for? */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--main-yellow);   
+  max-width: 100%;
+  z-index: 10;
+} 
+
+#nav-list-l,
+#nav-list-r {
+  display: flex;
+  align-items: center;
+}
+
+#nav-list-r a, #nav-list-l a {    
+  display: flex;
+  font-size: 2.2rem;
+  padding: 2rem;      /* 2rem means "2x the browser's font size" */
+  align-items: center;
+}   
+#nav-list-r a:hover {
+  background: var(--main-green);
+} 
+/* NAV BAR FOR MOBILE */
+@media screen and (max-width: 600px) {
+  #nav-list-r a {    
+    /* for the section links */
+    font-size: 14px;    
+    padding: 1rem;
+  }   
+  #nav-list-l a {
+    /* for the icons */
+    padding: 0.5rem;
+    font-size: 14px;
+    /* YES, THIS FIXES PADDING REGARDLESS OF THE MOBILE SIZE. */
+    /* padding-top: 60%; */
+  }
+  .fa {
+    /* font-size: 2xs; */
+    font-size: 14px; 
+  }
+}
+
+/************************************* WELCOME SECTION STUFF: *************************************/
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  /* "display: flex" gives access to the flexbox arrangement. 
+  "flex-direction: column" arranges elements from top to bottom.
+  "justify-content: center" puts elements in center of page and not the top.
+  "align-items: center" puts elements in center and not the left of the page.
+  "width: 100%" ensures the content and background take up the entire page
+  "height: 100vh" makes sure this section takes up the entire page, vertically.  
+  Original background is black, but that gets covered up by the background image (THIS STUFF MOVED ELSEWHERE) */
+}
+
+/************************************* GAME CRAP: *************************************/
+.sheephunt-section {
+  text-align: center;
+  padding: 10rem 2rem;
+  background: black;
+}
+
+#game {
+  border: none;
+}
+
+iframe {
+  transform: scale(1.5);
+  padding-top: 10em;
+}
+
+/************************************* PROJECTS SECTION STUFF *************************************/
+.projects-section {
+  text-align: center;
+  padding: 10rem 2rem;
+}
+
+.projects-section-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+/*   Underlines the header with a white line */
+}
+
+/* "Automagic" image grid stuff */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  /* gets the element with the "projects-grid" class (a div), and sets its display to "grid".  */
+  /* "grid-template-columns" basically determines the layout of all the columns. In this case, it uses auto-fit 
+  to fit any amount of squares on the screen, so long as they can fit. All the squares that cannot fit get pushed 
+  down to other columns. The squares can shrink down to a minimum of 320px, and a max of 1 fraction each.
+  "width: 100%" makes sure the columns take up the entire width of the screen 
+  "margin-bottom: 6rem" determines the amount of space below the grid*/
+}
+
+.project, .nav {
+  background: var(--main-yellow);
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+  border-radius: 2px;
+}
+
+.active, .project:hover {
+  background-color: var(--second-yellow); 
+}
+
+.project-image {
+  height: calc(100% - 5.8rem);
+  width: 100%;
+  /* "height: calc(100% - 5.8rem);" gives the images uniformity in their height and therefore the amount of background that they 
+  cover. width:100% ensures that the images take up the width of the screen, nothing more, nothing less. I wonder how its gets 
+  uniform spacing on both sides of the grid */
+}
+
+.cert-image {
+  /* height: calc(100% - 5.8rem); */
+  height: calc(100%);     
+  /* ^^^ hope this doesn't effect certs on mobile */
+  width: 100%;
+}
+
+/* PROJECT STUFF FOR MOBILE */
+@media screen and (max-width: 600px) {
+  .projects-grid, .feats-grid, .writing-grid {
+    width: 100%;
+    max-width: 1280px;    /* WTF IS THIS FOR AGAIN??? */
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+
+  .project-image, .cert-image {
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+    /* height: 100px; */
+  }
+}
+
+/* PROJECT STUFF FOR MACBOOK */
+@media screen and (min-width: 3000px) {
+  .projects-grid, .feats-grid, .writing-grid {
+    width: 100%;
+    /* max-width: 1280px; */
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
+
+  .project-image, .cert-image {
+    max-width: 100%;
+    min-width: 300px;
+    height: calc(100% - 5.8rem);
+    /* height: 100px; */
+  }
+}
+
+.project-title {
+    font-size: 2rem;
+    padding: 1rem 0.5rem;
+}
+
+/* COLLAPSIBLE STUFF */
+.collapsible {
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+  background-color: var(--main-yellow);
+  color: var(--main-white);
+  cursor: pointer;
+  padding: 18px;
+  width: 30%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 5%;
+}
+.active, .collapsible:hover {
+  /* background-color: #e8c468; */
+  background-color: var(--second-yellow)
+}
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  /* background-color: var(--main-green); */
+}
+
+/****************************  ABOUT SECTION ****************************/
+.about-section {
+
+    margin: 0 auto 6rem auto;
+    margin: 0 auto;
+    padding: 10rem 2rem;
+    text-align: center;
+}
+.about-section-header , .feats-section-header, .skills-section-header, .writing-section-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+  /*   Underlines the header with a white line */
+}
+/* DONT FUCKING MOD */
+.about-image {
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; */
+  /* height: 45%; */
+  height: 60%; 
+  height: 800px;
+}
+/* if screen is less than 500px wide (my phone is 428x). SUCCESS.*/
+@media screen and (max-width:500px) {   
+  .about-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* max-width: 60%; */
+    width: 50%;
+    height: 20%;
+  }
+}
+
+/* OLD MACBOOK MEDIA QUERY DON'T WORK. HAVE TO USE THIS ONE. YES THIS ACTUALLY WORKS FOR THE MACBOOK: */
+@media screen and (min-width: 1440px), only screen and (min-device-pixel-ratio : 1.5) {
+  .about-section figure img {
+    width: 25%;
+    /* height: 400px;    */
+    height: 60%;   
+    margin-bottom: 1%;
+  }
+  .about-section figure {
+    padding: 50px;
+  }
+}
+
+/* WTF IS THIS FOR AGAIN??? */
+/* section ul {
+  display: table; 
+  margin: 0 auto;
+  text-align: left;
+} */
+
+/*  CENTERS THE IMAGE CAPTION  */
+figure {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  margin: 0.5em;
+  padding: 0.5em;
+
+}
+
+/* ACCOMPLISHMENTS STUFF  */
+.feats-section, .writing-section {
+  text-align: center;
+  padding: 10rem 2rem;
+  /* background: var(--main-green); */
+  /* aligns eveything in the middle of the page, with 20rem and 2rem vertical and horizontal padding. */
+  /* box-shadow: 1px 1px 2px rgb(0 0 0 / 50%); */
+}
+
+/* .active, .collapsible:hover {
+  background-color: #e8c468;
+} */
+.feats-grid a:hover, .writing-grid a:hover {
+  /* box-shadow: 1px 1px 2px rgb(0 0 0 / 50%); */
+  box-shadow: 5px 5px 7px rgb(0 0 0 / 50%);
+}
+
+.feats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  /* margin-bottom: 6rem; */
+  /* gets the element with the "projects-grid" class (a div), and sets its display to "grid".  
+  /* "grid-template-columns" basically determines the layout of all the columns. In this case, it 
+  uses auto-fit to fit any amount of squares on the screen, so long as they can fit. All the squares 
+  that cannot fit get pushed down to other columns. The squares can shrink down to a minimum of 320px, 
+  and a max of 1 fraction each.
+  "width: 100%" makes sure the columns take up the entire width of the screen 
+  "margin-bottom: 6rem" determines the amount of space below the grid*/
+}
+
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 3rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  /* gets the element with the "projects-grid" class (a div), and sets its display to "grid".  
+  /* "grid-template-columns" basically determines the layout of all the columns. In this case, it 
+  uses auto-fit to fit any amount of squares on the screen, so long as they can fit. All the squares 
+  that cannot fit get pushed down to other columns. The squares can shrink down to a minimum of 320px, 
+  and a max of 1 fraction each.
+  "width: 100%" makes sure the columns take up the entire width of the screen 
+  "margin-bottom: 6rem" determines the amount of space below the grid*/
+}
+
+.writing-grid img {
+  width: 100%;
+  height: auto;
+  display: block; /* Ensures images don’t have extra space at the bottom */
+}
+
+/* SKILLS STUFF */
+.skills-section {
+  margin: 0 auto 6rem auto;
+  margin: 0 auto;
+  padding: 10rem 2rem;
+}
+.skills-section p {
+  /* max-width: 140px;
+  margin: 0 auto 3rem auto;
+  border-bottom: 0.2rem solid var(--main-white); */
+  text-align: center;
+  max-width: 200px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+
+/* Here's what causes borders on writing panels */
+/* wtf is this again? */
+.writing-grid a {
+  /* border: 5px solid #000000; */
+  background-color: #ffffff; /* White background */
+}
+
+/* FOR THE BULLET POINTS IN BOTH SKILL AND ABOUT SECTION */
+section ul {
+  display: table; 
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  /* background-color: #3c3b3b; */
+} 
+.footer h4 {
+  font-size: 25px;
+  padding-bottom: 1%;
+}
+.footer ul {
+  /* lol gotta use this width shit just to center the horizontal line. Primitive  */
+  /* width: 50%; */
+  margin: 0 auto;
+  /* transform: translate(-50%, -50%);
+  text-align: center; */
+  list-style-type: none;
+  display: table;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0;
+  /* left: 50%; */
+  padding-bottom: 1%;
+}
+
+/* for fucking macbook. Purley navbar crap: */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only 
+screen and (min-device-pixel-ratio : 1.5) { 
+  .footer ul {
+    /* lol gotta use this width shit just to center the horizontal line. Primitive  */
+    /* width: 80%; */
+    margin: 0 auto;
+    list-style-type: none;
+    /* display: table; */
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    padding-bottom: 1%;
+    /* background-color: var(--dark-gray); */
+  }
+}
+.footer ul li {
+  display: table-cell;
+  font-size: 18px;
+  padding: 2rem;
+}
+.footer ul li a {
+  padding: 35px;
+  color: var(--white-russian);
+  font-size: 18px;
+}
+.footer ul li a:hover { 
+  color: #4b76db; 
+} /* CSS link hover */
+.footer p {
+  font-size: 14px;
+}
+
+/* this is for mobile devices */
+@media screen and (max-width: 600px) { 
+  .footer {
+    width: 100%;
+    text-align: center;
+    padding: 50px 0;
+    background-color: #3c3b3b;
+    color: var(--white-russian);
+  } 
+  .footer h4 {
+    font-size: 20px;
+    padding-bottom: 1%;
+  }
+  .footer ul {
+    list-style: none;
+    padding: 0;
+    /* Wrap items to the next line if there's not enough space */
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer .contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .footer .icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .footer ul li {
+    display: table-cell;
+    font-size: 18px;
+    padding: 2rem;
+  }
+}
+/* TODO: MAKE ALL THE FOOTER SHIT STACKED ON MOBILE */
